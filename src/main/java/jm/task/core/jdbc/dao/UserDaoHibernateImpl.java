@@ -33,9 +33,7 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction.commit();
 
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            e.printStackTrace();
         }
 
     }
@@ -50,9 +48,7 @@ public class UserDaoHibernateImpl implements UserDao {
 
             transaction.commit();
         }catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            e.printStackTrace();
         }
 
     }
@@ -93,20 +89,17 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        List <User> user = null;
+        List <User> userList = null;
         try (Session session = sessionFactory.openSession()) {
             transaction = session.beginTransaction();
-            user = session.createNativeQuery("SELECT * FROM users", User.class)
+            userList = session.createNativeQuery("SELECT * FROM users", User.class)
                     .getResultList();
             transaction.commit();
         } catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
+            e.printStackTrace();
             }
 
-        }
-
-        return user;
+        return userList;
     }
 
     @Override
@@ -119,9 +112,7 @@ public class UserDaoHibernateImpl implements UserDao {
             transaction.commit();
 
         }  catch (Exception e) {
-            if (transaction != null) {
-                transaction.rollback();
-            }
+            e.printStackTrace();
         }
 
 
