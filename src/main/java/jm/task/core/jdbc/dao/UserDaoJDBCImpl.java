@@ -20,7 +20,12 @@ public class UserDaoJDBCImpl implements UserDao {
 
     }
 
-    public void saveUser(String name, String lastName, byte age) {
+   @Override
+   public void saveUser(String name, String lastName, int age) {
+
+   }
+
+   public void saveUser(String name, String lastName, byte age) {
 
     }
 
